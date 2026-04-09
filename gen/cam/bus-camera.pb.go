@@ -154,7 +154,9 @@ const file_proto_camera_bus_camera_proto_rawDesc = "" +
 	"session_id\x18\x04 \x01(\tR\tsessionId\"B\n" +
 	"\fStreamStatus\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessageB\x12Z\x10../../gen;cam_ptb\x06proto3"
+	"\amessage\x18\x02 \x01(\tR\amessage2Q\n" +
+	"\rCameraControl\x12@\n" +
+	"\x12StartStreamSession\x12\x14.handle.StreamConfig\x1a\x14.handle.StreamStatusB\x12Z\x10../../gen;cam_ptb\x06proto3"
 
 var (
 	file_proto_camera_bus_camera_proto_rawDescOnce sync.Once
@@ -174,8 +176,10 @@ var file_proto_camera_bus_camera_proto_goTypes = []any{
 	(*StreamStatus)(nil), // 1: handle.StreamStatus
 }
 var file_proto_camera_bus_camera_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
+	0, // 0: handle.CameraControl.StartStreamSession:input_type -> handle.StreamConfig
+	1, // 1: handle.CameraControl.StartStreamSession:output_type -> handle.StreamStatus
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -194,7 +198,7 @@ func file_proto_camera_bus_camera_proto_init() {
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_proto_camera_bus_camera_proto_goTypes,
 		DependencyIndexes: file_proto_camera_bus_camera_proto_depIdxs,

@@ -26,7 +26,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CameraControlClient interface {
-	StartStreamSession(ctx context.Context, in *StreamConfig, opts ...grpc.CallOption) (*StreamStatus, error)
+	StartStreamSession(ctx context.Context, in *StreamConfig, opts ...grpc.CallOption) (*StreamConfig, error)
 }
 
 type cameraControlClient struct {
@@ -37,9 +37,9 @@ func NewCameraControlClient(cc grpc.ClientConnInterface) CameraControlClient {
 	return &cameraControlClient{cc}
 }
 
-func (c *cameraControlClient) StartStreamSession(ctx context.Context, in *StreamConfig, opts ...grpc.CallOption) (*StreamStatus, error) {
+func (c *cameraControlClient) StartStreamSession(ctx context.Context, in *StreamConfig, opts ...grpc.CallOption) (*StreamConfig, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(StreamStatus)
+	out := new(StreamConfig)
 	err := c.cc.Invoke(ctx, CameraControl_StartStreamSession_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func (c *cameraControlClient) StartStreamSession(ctx context.Context, in *Stream
 // All implementations must embed UnimplementedCameraControlServer
 // for forward compatibility.
 type CameraControlServer interface {
-	StartStreamSession(context.Context, *StreamConfig) (*StreamStatus, error)
+	StartStreamSession(context.Context, *StreamConfig) (*StreamConfig, error)
 	mustEmbedUnimplementedCameraControlServer()
 }
 
@@ -62,7 +62,7 @@ type CameraControlServer interface {
 // pointer dereference when methods are called.
 type UnimplementedCameraControlServer struct{}
 
-func (UnimplementedCameraControlServer) StartStreamSession(context.Context, *StreamConfig) (*StreamStatus, error) {
+func (UnimplementedCameraControlServer) StartStreamSession(context.Context, *StreamConfig) (*StreamConfig, error) {
 	return nil, status.Error(codes.Unimplemented, "method StartStreamSession not implemented")
 }
 func (UnimplementedCameraControlServer) mustEmbedUnimplementedCameraControlServer() {}

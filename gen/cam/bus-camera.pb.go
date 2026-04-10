@@ -89,58 +89,6 @@ func (x *StreamConfig) GetSessionId() string {
 	return ""
 }
 
-type StreamStatus struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StreamStatus) Reset() {
-	*x = StreamStatus{}
-	mi := &file_proto_camera_bus_camera_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StreamStatus) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StreamStatus) ProtoMessage() {}
-
-func (x *StreamStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_camera_bus_camera_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StreamStatus.ProtoReflect.Descriptor instead.
-func (*StreamStatus) Descriptor() ([]byte, []int) {
-	return file_proto_camera_bus_camera_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *StreamStatus) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *StreamStatus) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
 var File_proto_camera_bus_camera_proto protoreflect.FileDescriptor
 
 const file_proto_camera_bus_camera_proto_rawDesc = "" +
@@ -151,12 +99,9 @@ const file_proto_camera_bus_camera_proto_rawDesc = "" +
 	"\brtsp_url\x18\x02 \x01(\tR\artspUrl\x12\x1b\n" +
 	"\tcamera_ip\x18\x03 \x01(\tR\bcameraIp\x12\x1d\n" +
 	"\n" +
-	"session_id\x18\x04 \x01(\tR\tsessionId\"B\n" +
-	"\fStreamStatus\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage2Q\n" +
+	"session_id\x18\x04 \x01(\tR\tsessionId2Q\n" +
 	"\rCameraControl\x12@\n" +
-	"\x12StartStreamSession\x12\x14.handle.StreamConfig\x1a\x14.handle.StreamStatusB\x12Z\x10../../gen;cam_ptb\x06proto3"
+	"\x12StartStreamSession\x12\x14.handle.StreamConfig\x1a\x14.handle.StreamConfigB\x12Z\x10../../gen;cam_ptb\x06proto3"
 
 var (
 	file_proto_camera_bus_camera_proto_rawDescOnce sync.Once
@@ -170,14 +115,13 @@ func file_proto_camera_bus_camera_proto_rawDescGZIP() []byte {
 	return file_proto_camera_bus_camera_proto_rawDescData
 }
 
-var file_proto_camera_bus_camera_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_camera_bus_camera_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_proto_camera_bus_camera_proto_goTypes = []any{
 	(*StreamConfig)(nil), // 0: handle.StreamConfig
-	(*StreamStatus)(nil), // 1: handle.StreamStatus
 }
 var file_proto_camera_bus_camera_proto_depIdxs = []int32{
 	0, // 0: handle.CameraControl.StartStreamSession:input_type -> handle.StreamConfig
-	1, // 1: handle.CameraControl.StartStreamSession:output_type -> handle.StreamStatus
+	0, // 1: handle.CameraControl.StartStreamSession:output_type -> handle.StreamConfig
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -196,7 +140,7 @@ func file_proto_camera_bus_camera_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_camera_bus_camera_proto_rawDesc), len(file_proto_camera_bus_camera_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

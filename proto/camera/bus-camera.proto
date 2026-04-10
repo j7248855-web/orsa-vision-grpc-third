@@ -5,16 +5,11 @@ package handle;
 option go_package = "../../gen;cam_pt";
 
 service CameraControl {
-  rpc StartStreamSession (StreamConfig) returns (StreamStatus);
+  rpc StartStreamSession (StreamConfig) returns (StreamConfig);
 }
 message StreamConfig {
   string bus_id = 1;      
   string rtsp_url = 2;    
   string camera_ip = 3;   
   string session_id = 4;  
-}
-
-message StreamStatus {
-  bool success = 1;
-  string message = 2;
 }
